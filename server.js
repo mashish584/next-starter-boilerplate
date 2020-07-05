@@ -1,5 +1,5 @@
 require("dotenv").config({ path: ".env" });
-console.log(process.env.IS_DEV);
+
 const next = require("next");
 const app = next({ dev: process.env.IS_DEV === "true" });
 const handler = app.getRequestHandler();
