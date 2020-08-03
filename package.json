@@ -6,8 +6,11 @@
 		"dev": "node server.js",
 		"build": "next build",
 		"start": "next start",
-		"pretty": "prettier --write --config .prettierrc.json server.js  pages/ components/",
-		"analyze": "cross-env BUNDLE_ANALYZE=true npm run build"
+		"pretty": "prettier --write --config .prettierrc.json server.js pages/ components/ utils/",
+		"lint": "eslint  pages/ components/ utils/",
+		"lint:fix": "eslint pages/ components/ utils/ --fix",
+		"analyze": "cross-env BUNDLE_ANALYZE=true npm run build",
+		"analyze-code": "npm run pretty && npm run lint:fix && npm run lint"
 	},
 	"husky": {
 		"hooks": {
@@ -16,13 +19,15 @@
 	},
 	"lint-staged": {
 		"*.{js,jsx}": [
-			"npm run pretty"
+			"npm run analyze-code"
 		]
 	},
 	"dependencies": {
+		"axios": "^0.19.2",
 		"next": "9.4.4",
 		"react": "16.13.1",
-		"react-dom": "16.13.1"
+		"react-dom": "16.13.1",
+		"react-toastify": "^6.0.8"
 	},
 	"devDependencies": {
 		"@next/bundle-analyzer": "^9.4.4",
@@ -30,9 +35,13 @@
 		"@zeit/next-sass": "^1.0.1",
 		"cross-env": "^7.0.2",
 		"dotenv": "^8.2.0",
+		"eslint": "^7.6.0",
+		"eslint-plugin-import": "^2.22.0",
+		"eslint-plugin-react": "^7.20.5",
 		"husky": "^4.2.5",
 		"lint-staged": "^10.2.11",
 		"next-compose-plugins": "^2.2.0",
-		"prettier": "^2.0.5"
+		"prettier": "^2.0.5",
+		"sass": "^1.26.10"
 	}
 }

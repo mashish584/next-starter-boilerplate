@@ -1,10 +1,10 @@
+/* eslint-disable no-undef */
 require("dotenv").config({ path: ".env" });
 
+const { createServer } = require("http");
 const next = require("next");
 const app = next({ dev: process.env.IS_DEV === "true" });
 const handler = app.getRequestHandler();
-
-const { createServer } = require("http");
 
 // set port
 const port = process.env.PORT || 8080;

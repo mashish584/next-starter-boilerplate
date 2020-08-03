@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import getConfig from "next/config";
 import { useEffect } from "react";
